@@ -1,0 +1,115 @@
+.contenedor-post{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100%;
+}
+
+.post-header{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.post-title{
+    color: rgba(0, 0, 0, 0.7);
+    font-style: oblique;
+}
+
+.post-date{
+    color: #474646e7;
+}
+
+.post-content{
+    width: 80%;
+    font-style: sans-serif;
+    margin-bottom: 50px;
+}
+
+.post-comment{
+    width: 95%;
+    margin-bottom: 20px;
+    
+}
+
+.post-comment-title{
+    color: rgba(0, 0, 0, 0.7);
+    font-style: oblique;
+    margin-bottom: 25px;
+}
+
+.comments{
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.commentary-object{
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.commentary-object-header{
+    font-size: 12px;
+    font-style: oblique;
+}
+
+.commentary-object-content{
+    font-size: 11px;
+}
+
+
+/*COMENTARIOS DENTRO DEL COMENTARIO*/
+
+.commentary-answer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.commentary-answer-responder{
+    align-self: flex-end;
+    color: #2e2020;
+    font-size: 11px;
+}
+
+.commentary-answer-responder:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.commentary-answer-textarea{
+    width: 60%;
+    align-self: flex-start;
+    margin-left: 15px;
+    display: none;
+}
+
+.commentary-answer-submit{
+    width: 100px;
+    align-self: flex-start;
+    margin-left: 15px;
+    color: #2e2020;
+    font-size: 11px;
+    display: none;
+}
+
+.commentary-answer-submit:hover{
+    cursor: pointer;
+    text-decoration: underline;   
+}
+
+.commentary-answer-cancel{
+    width: 100px;
+    align-self: flex-start;
+    margin-left: 15px;
+    color: #2e2020;
+    font-size: 11px;
+    display: none;
+}
+
+.commentary-answer-cancel:hover{
+    cursor: pointer;
+    text-decoration: underline;   
+}

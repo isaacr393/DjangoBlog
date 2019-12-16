@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css'  %}">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet"> 
+</head>
+<body>
+
+    <div class="contenedor">
+
+            <h3 class="loginSpan">LOGIN</h3>
+        <form action="{% url 'blog:validarLogin' %}" method="POST">
+            {% csrf_token %}
+            <span class="error_message">{% if error_message %} {{error_message}} {% endif %}</span>
+            
+            <input type="text" placeholder="User" name="usuario">
+            <input type="password" placeholder="Password" name="contrasena">
+            <button type="submit">Enviar</button>
+
+        </form>
+    </div>
+    
+</body>
+</html>

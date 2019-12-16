@@ -1,0 +1,24 @@
+/*Estilos para mantener el footer siempre en el pie de pagina usando un contenedor*/
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+.contenedor{
+    padding-bottom: 150px;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 100%;
+    background: #141313;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer h4{
+    color: #fff;
+}

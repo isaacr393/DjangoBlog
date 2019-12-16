@@ -1,0 +1,18 @@
+<div class="commentary-object" id="{{comentary.id}}">
+    <h3 class="commentary-object-header">{{comentary.author}}</h3>
+    <div class="commentary-object-content">{{comentary.contenido}}</div>
+    <div class="commentary-answer" id="commentary-answer-{{comentary.id}}">
+        <p class="commentary-answer-responder" id="commentary-answer-responder-{{comentary.id}}">Responder</p>
+        <textarea name="commentaryFromCommentary" id="div-answer-textarea-{{comentary.id}}" cols="10" rows="3" class="commentary-answer-textarea"></textarea>
+        <p class="commentary-answer-submit" id="div-answer-submit-{{comentary.id}}">Enviar</p>
+        <p class="commentary-answer-cancel" id="div-answer-cancel-{{comentary.id}}">Cancelar</p>
+    </div>
+    <div class="subcommentaries-data" id="subcommentaries-data-{{comentary.id}}">
+        {% for subcommentary in comentarios %}
+            {% if subcommentary.comentarioPadre == comentary %}
+                {% include "commentary.html" with comentary=subcommentary %}
+            {% endif %}
+        {% endfor %}
+    </div>
+   
+</div>

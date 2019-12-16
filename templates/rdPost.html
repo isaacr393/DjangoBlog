@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block user %} {{usuario.user}} {% endblock %}
+
+{% block title %}
+    Lectura Post
+{% endblock %}
+
+{% block css %}  <link rel="stylesheet" href="{% static 'css/postContent.css' %}"> {% endblock %}
+{% block externalResource %}{% endblock %}
+
+{% block content %}
+    
+    <div class="contenedor-post">
+
+        <div class="post-header">
+            <h1 class="post-title">{{post.title}}</h1>
+            <p class="post-date">{{post.fechaEmision}}</p>
+        </div>
+
+        <div class="post-content">
+            <p>{{post.contenido}}</p>
+        </div>
+
+        <div class="post-comment">
+            <h3 class="post-comment-title">Comentarios</h3>
+            <div class="comments" id="comments">
+                {% for comentary in comentarios %}
+
+                    {% if comentary.orden == 0 %}    
+
+                        <div class="commentary-object" id="{{comentary.id}}">
+                            <h3 class="commentary-object-header">{{comentary.author}}</h3>
+                            <div class="commentary-object-content">{{comentary.contenido}}</div>
+                            <div class="commentary-answer" id="commentary-answer-{{comentary.id}}">
+                                <p class="commentary-answer-responder" id="commentary-answer-responder-{{comentary.id}}">Responder</p>
+                                <textarea name="commentaryFromCommentary" id="div-answer-textarea-{{comentary.id}}" cols="10" rows="3" class="commentary-answer-textarea"></textarea>
+                                <p class="commentary-answer-submit" id="div-answer-submit-{{comentary.id}}">Enviar</p>
+                                <p class="commentary-answer-cancel" id="div-answer-cancel-{{comentary.id}}">Cancelar</p>
+                            </div>
+                            <div class="subcommentaries-data" id="subcommentaries-data-{{comentary.id}}">
+                                {% for subcommentary in comentarios %}
+                                    {% if subcommentary.comentarioPadre == comentary %}
+                                        {% include "commentary.html" with comentary=subcommentary %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+            <div class="commentary">
+                <h5>Comentar</h5>
+                <textarea name="commentary" id="commentary-text" cols="50" rows="10"></textarea>
+                <button id="enviarComentario">Comentar</button>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block js %} 
+    <script type="text/javascript"> 
+        window.CSRF_TOKEN = "{{ csrf_token }}"; 
+        user = "{{usuario.user}}";
+        userId = '{{usuario.id}}';
+        postId = '{{post.id}}';
+    </script>
+    <script src="{% static 'js/comentarios.js' %}"></script> 
+{% endblock %}

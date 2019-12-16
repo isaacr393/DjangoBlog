@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block user %} {{usuario.user}} {% endblock %}
+
+{% block title %}
+    Post
+{% endblock %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/post.css'  %}"> {% endblock %}
+{% block externalResource %} <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">  {% endblock %}
+
+{% block content %}
+
+    <div class="contenedor-form">
+        <form action="{% url 'blog:registrarPost' usuario.id %}" method="POST">
+                {% csrf_token %}
+            <div class="form-align">
+                <label for="title">Titulo del post</label> <br>
+                <input type="text" name="title" id="title" maxlength="50" >
+            </div>
+            <div class="form-align">
+                <label for="perfilVer">Que usuarios pueden ver el post</label> <br>
+                <select name="perfilVer" id="perfilVer">
+                    {% if usuario.getPerfil == True %}
+                        <option value="USER">USER</option>
+                        <option value="ADMIN">ADMIN</option>
+                    {% else %}
+                        <option value="USER">USER</option>
+                    {% endif %}
+                </select>
+            </div>
+            <div class="form-align">
+                <label for="tags">Coloca algun tag</label> <br>
+                <input type="text" name="tags" id="tags" maxlength="100">
+            </div>
+            <div class="form-align">
+                <label for="contenido">Postea aqui</label> <br>
+                <textarea name="contenido" id="contenido" cols="80" rows="10"></textarea>
+            </div> 
+            <di class="form-align">
+                <button type="submit">Post</button>
+            </div>
+            
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} 
+    HomePage
+{% endblock %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'css/home.css' %}"> {% endblock %}
+
+{% block user %} {{usuario.user}} {% endblock %}
+
+{% block content %}
+
+    <div class="post-content">
+    {% for post in posts %}
+        {% if usuario.getPerfil == True %}
+            <div id="{{post.id}}" class="post-card">
+                <a href="{% url 'blog:visualizarPost' usuario.id post.id %}"><h4>{{ post.title }}</h4></a>
+                <p> {{ post.getContext }}</p>
+            </div>
+        {% elif usuario.getPerfil == False and post.getPerfil == False %}
+            <div id="{{post.id}}" class="post-card">
+                <a href="{% url 'blog:visualizarPost' usuario.id post.id %}"><h4>{{ post.title }}</h4></a>
+                <p> {{ post.getContext }}</p>
+            </div>
+    
+        {% endif %}
+
+    {% endfor %}
+    </div>
+
+{% endblock %}
